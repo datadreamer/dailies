@@ -3,3 +3,44 @@ body{
 	margin: 0px;
   overflow: hidden;
 }
+
+a{
+	text-decoration: none;
+}
+
+.thumb {
+	float: left;
+	width: 50%;
+	padding-bottom: 50%;
+	background-size: contain;
+}
+
+.thumb:hover .date{
+	opacity: 1;
+}
+
+.date{
+	float: left;
+	width: 100%;
+	color: #fff;
+	font-family: sans-serif;
+	font-size: 24px;
+	background-color: rgba(0,0,0,0.8);
+	opacity: 0;
+  transition: opacity 500ms;
+  -webkit-transition: opacity 500ms;
+}
+
+@media only screen and (min-width: 480px){
+	.thumb {
+		width:33.33%;
+		padding-bottom: 33.33%;
+	}
+}
+
+@media only screen and (min-width: 960px){
+	.thumb {
+		width: 25%;
+		padding-bottom: 25%;
+	}
+}
