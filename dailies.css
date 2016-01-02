@@ -13,6 +13,7 @@ a{
 	width: 50%;
 	padding-bottom: 50%;
 	background-size: contain;
+	background-repeat: no-repeat;
 }
 
 .thumb:hover .date{
@@ -20,8 +21,8 @@ a{
 }
 
 .date{
-	float: left;
-	width: 100%;
+	position: absolute;
+	text-align: center;
 	color: #fff;
 	font-family: sans-serif;
 	font-size: 24px;
@@ -36,11 +37,17 @@ a{
 		width:33.33%;
 		padding-bottom: 33.33%;
 	}
+	.date{
+		width: 33.33%;
+	}
 }
 
 @media only screen and (min-width: 960px){
 	.thumb {
 		width: 25%;
 		padding-bottom: 25%;
+	}
+	.date{
+		width: 25%;
 	}
 }
