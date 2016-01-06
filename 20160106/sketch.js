@@ -30,34 +30,7 @@ function draw(){
         var a = (1 - (dist / connectRadius)) * 255;
         var colorA = color(red(points[i].c), green(points[i].c), blue(points[i].c), a);
         var colorB = color(red(points[j].c), green(points[j].c), blue(points[j].c), a);
-        //gradientLine(points[i].x, points[i].y, points[j].x, points[j].y, colorA, colorB);
-
-        // fill(255,a);
-        // beginShape();
-        // var linehalf = points[i].d / 2;
-        // var xvec = ydiff/dist;
-        // var yvec = 0 - xdiff/dist;
-        // var xdist = xvec * linehalf;
-        // var ydist = yvec * linehalf;
-        // vertex(points[i].x + xdist, points[i].y + ydist);
-        // vertex(points[i].x - xdist, points[i].y - ydist);
-        // linehalf = points[j].d / 2;
-        // xdist = xvec * linehalf;
-        // ydist = yvec * linehalf;
-        // vertex(points[j].x - xdist, points[j].y - ydist);
-        // vertex(points[j].x + xdist, points[j].y + ydist);
-        // endShape(CLOSE);
-
         drawPoly(points[i], points[j], xdiff, ydiff, colorA, colorB);
-
-        // drawPolygon([
-        // { x: 100, y: 200 },
-        // { x: 200, y: 100 },
-        // { x: 300, y: 200 },
-        // { x: 250, y: 300 },
-        // { x: 150, y: 300 }
-        // ]);
-
       }
     }
     // check for dead points
@@ -75,32 +48,10 @@ function draw(){
   deadpoints = [];
 }
 
-
-
-
-function getLinearGradient() {
-  var grdient = this.drawingContext.createLinearGradient(50, 50, 350, 50);
-  grdient.addColorStop(0, "rgb(255,128,0)");
-  grdient.addColorStop(1, "rgb(50,0,0)");
-  return grdient;
-}
-function drawPolygon(points) {
-  this.drawingContext.fillStyle = getLinearGradient();
-  this.drawingContext.beginPath();
-  this.drawingContext.moveTo(points[0].x, points[0].y);
-  for (var i = 1; i < points.length; i++) {
-    this.drawingContext.lineTo(points[i].x, points[i].y);
-  }
-  this.drawingContext.closePath();
-  //this.DrawingContext.globalAlpha = polygon.AlphaFill / 255;
-  this.drawingContext.fill();
-  //this.DrawingContext.globalAlpha = polygon.AlphaStroke / 255;
-}
-
 function drawPoly(pointA, pointB, xdiff, ydiff, colorA, colorB){
   var grad = this.drawingContext.createLinearGradient(pointA.x, pointA.y, pointB.x, pointB.y);
   grad.addColorStop(0, colorA);
-  grad.addColorStop(0, colorB);
+  grad.addColorStop(1, colorB);
   this.drawingContext.fillStyle = grad;
 
   var dist = Math.sqrt(xdiff*xdiff + ydiff*ydiff);
