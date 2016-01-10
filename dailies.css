@@ -2,6 +2,8 @@ body{
 	background-color: #000000;
 	margin: 0px;
   overflow: hidden;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 10px;
 }
 
 a{
@@ -22,14 +24,20 @@ a{
 
 .date{
 	position: absolute;
-	text-align: center;
+	width: 50%;
 	color: #fff;
-	font-family: sans-serif;
-	font-size: 24px;
 	background-color: rgba(0,0,0,0.8);
 	opacity: 0;
   transition: opacity 500ms;
   -webkit-transition: opacity 500ms;
+}
+
+.title{
+	position: absolute;
+	bottom: 0px;
+	padding: 5px;
+	color: #fff;
+	background-color: rgba(0,0,0,0.8);
 }
 
 @media only screen and (min-width: 480px){
