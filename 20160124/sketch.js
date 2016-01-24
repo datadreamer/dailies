@@ -5,7 +5,7 @@ var targetRectSize, pastRectSize;
 var rectSizing = false;
 var rectSizingStart;
 var angleDiff = 0;
-var delayDuration = 500;
+var delayDuration = 150;
 var fadeDuration = 3000;
 var rectSizingDuration = 3000;
 
@@ -16,7 +16,7 @@ function setup(){
   noStroke();
   var xpos = windowWidth/2;
   var ypos = windowHeight/2;
-  angleDiff = (PI * 2) / rectCount;
+  angleDiff = radians(360 / rectCount);
   for(var i=0; i<rectCount; i++){
     var c = getColor((255 / rectCount) * i);
     var a = angleDiff * i;
