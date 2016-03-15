@@ -26,6 +26,11 @@
 
 		<div id="content">
 
+			<a href="20160315/">
+				<div class="thumb" style="background-image: url('20160315/thumb.png')">
+					<span class="date">2016 03 15<br/>Sol Lewitt Wall Drawing #419</span>
+				</div>
+			</a>
 			<a href="20160314/">
 				<div class="thumb" style="background-image: url('20160314/thumb.png')">
 					<span class="date">2016 03 14<br/>Sol Lewitt Wall Drawing #631</span>
