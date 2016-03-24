@@ -10,9 +10,15 @@ function setup(){
   canvas.parent("splash");
   frameRate(60);
   ellipseMode(CENTER);
+  imageMode(CENTER);
   textAlign(CENTER);
+  strokeCap(SQUARE);
   // create microphone object to determine audio levels.
-  maxDiameter = windowWidth/2;
+  if(windowWidth < windowHeight){
+    maxDiameter = windowWidth/2;
+  } else {
+    maxDiameter = windowHeight/2;
+  }
   mic = new Microphone(windowWidth/2, windowHeight/2);
   // create instrument object for each sound file.
   colors = [color(0,180,255), color(0,255,0), color(255,255,0), color(255,150,0), color(255,0,0)];
@@ -34,15 +40,17 @@ function preload(){
 }
 
 function loadSounds(){
-  sounds.push(loadSound("bass.mp3"));
-  sounds.push(loadSound("lead.mp3"));
-  sounds.push(loadSound("hihat.mp3"));
-  sounds.push(loadSound("snare.mp3"));
-  sounds.push(loadSound("kick.mp3"));
+  sounds.push(loadSound("bass.wav"));
+  sounds.push(loadSound("lead.wav"));
+  sounds.push(loadSound("hihat.wav"));
+  sounds.push(loadSound("snare.wav"));
+  sounds.push(loadSound("kick.wav"));
 }
 
 function draw(){
+  blendMode(NORMAL);
   background(0);
+  blendMode(SCREEN);
   mic.draw();
   noStroke();
   for(var i=0; i<instrument.length; i++){
@@ -86,6 +94,7 @@ function Instrument(x, y, sound, c, name){
   this.c = c;
   this.name = name;
   this.a = 0;
+  this.angle = 0;
   this.d = 0;
   this.dragging = false;
 }
@@ -98,11 +107,20 @@ Instrument.prototype = {
       this.x = mouseX;
       this.y = mouseY;
     }
-    fill(red(this.c), green(this.c), blue(this.c), this.a);
-    ellipse(this.x, this.y, this.d, this.d);
+    push();
+    translate(this.x, this.y);
+    push();
+    rotate(this.angle);
+    strokeWeight(this.d/5);
+    stroke(red(this.c), green(this.c), blue(this.c), this.a);
+    arc(0, 0, this.d, this.d, 0, TWO_PI-QUARTER_PI);
+    pop();
+    noStroke();
     fill(255);
-    ellipse(this.x, this.y, 20, 20);
-    text(this.name, this.x, this.y+25);
+    ellipse(0, 0, 20, 20);
+    text(this.name, 0, 25);
+    pop();
+    this.angle += 0.1;
   },
 
   isOver(){
@@ -123,7 +141,7 @@ Instrument.prototype = {
 function Microphone(x, y){
   this.x = x;
   this.y = y;
-  this.d = windowWidth/2;
+  this.d = maxDiameter;
   this.dragging = false;
 }
 
