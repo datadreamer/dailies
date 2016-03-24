@@ -144,7 +144,7 @@ Microphone.prototype = {
         instrument[i].d = norm*maxDiameter;
         instrument[i].a = norm*255;
         if(instrument[i].sound != null){
-          instrument[i].sound.setVolume(norm*255);
+          instrument[i].sound.setVolume(norm);
         }
       } else {
         instrument[i].d = 0;
