@@ -89,6 +89,7 @@ function Instrument(x, y, sound, c, name){
   this.y = y;
   this.sound = sound;
   if(this.sound != null){
+    this.sound.setVolume(0);
     this.sound.loop();
   }
   this.c = c;
