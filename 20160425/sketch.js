@@ -1,7 +1,7 @@
 var bouncers = [];
 var lines = [];
 var gravity = 0.1;
-var releaseRate = 100;
+var releaseRate = 500;
 var lastRelease = 0;
 var startPos, finishPos;
 var drawingLine = false;
@@ -70,10 +70,7 @@ Bouncer.prototype = {
   constructor:Bouncer,
 
   draw:function(){
-    push();
-    translate(this.pos.x, this.pos.y);
-    point(0, 0);
-    pop();
+    line(this.pos.x, this.pos.y, this.pospast.x, this.pospast.y);
   },
 
   checkCollisions:function(){
@@ -82,6 +79,13 @@ Bouncer.prototype = {
     this.vec.add(0,gravity);
     if(this.pos.y > height){
       this.dead = true;
+    }
+    if(this.pos.x < 0){
+      this.pos.x = 0;
+      this.vec.x *= -1;
+    } else if(this.pos.x > width){
+      this.pos.x = width;
+      this.vec.x *= -1;
     }
 
     for(var i=0; i<lines.length; i++){
@@ -92,8 +96,12 @@ Bouncer.prototype = {
         var ab = p5.Vector.angleBetween(this.vec, lines[i].vec);
         //console.log(ab);
         //console.log(lines[i].perpangle, ab);
-        this.vec.rotate(lines[i].perpangle);
-        //this.vec = createVector(0,0);
+        if(this.vec.y > 0){
+          this.vec.rotate(ab*2);
+        } else {
+          this.vec.rotate(-ab*2);
+        }
+        this.pos.add(this.vec);
       }
     }
   }
@@ -108,7 +116,7 @@ function Line(start, finish){
   this.vec = p5.Vector.sub(start, finish);
   this.angle = this.vec.heading();
   this.perpangle = this.angle+HALF_PI;
-  console.log(this.angle);
+  //console.log(this.angle);
 }
 
 Line.prototype = {
