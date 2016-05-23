@@ -26,6 +26,11 @@
 
 		<div id="content">
 
+			<a href="20160522/">
+				<div class="thumb" style="background-image: url('20160522/thumb.png')">
+					<span class="date">2016 05 22<br/>Buzzsaw #4</span>
+				</div>
+			</a>
 			<a href="20160521/">
 				<div class="thumb" style="background-image: url('20160521/thumb.png')">
 					<span class="date">2016 05 21<br/>Buzzsaw #3</span>
