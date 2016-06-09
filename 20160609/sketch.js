@@ -54,17 +54,14 @@ function setup() {
     var z2 = Math.sin(a+Math.PI) * radius;
 
     // create NoisyLineCluster connecting positions on helix
-    var noisyLineCluster = new NoisyLineCluster(group, new THREE.Vector3(x,y,z), new THREE.Vector3(x2,y,z2), 5, 5, 50);
+    var noisyLineCluster = new NoisyLineCluster(group, new THREE.Vector3(x,y,z), new THREE.Vector3(x2,y,z2), 5, 10, 50);
 
     // create vertical clusters connecting to last horizontal cluster on helix
     if(i > 0){
       var last = horizontalClusters[horizontalClusters.length-1];
-      // TODO: connect based on startGeo/endGeo
-      var leftCluster = new ConnectingLineCluster(group, last.startGeo, noisyLineCluster.startGeo, 5, 2, 30);
-      var rightCluster = new ConnectingLineCluster(group, last.endGeo, noisyLineCluster.endGeo, 5, 2, 30);
-      // connect current horizontal cluster to previous
-      //var leftCluster = new NoisyLineCluster(group, last.startPos, noisyLineCluster.startPos, 5, 2, 30);
-      //var rightCluster = new NoisyLineCluster(group, last.endPos, noisyLineCluster.endPos, 5, 2, 30);
+      // connect based on startGeo/endGeo
+      var leftCluster = new ConnectingLineCluster(group, last.startGeo, noisyLineCluster.startGeo, 2, 30);
+      var rightCluster = new ConnectingLineCluster(group, last.endGeo, noisyLineCluster.endGeo, 2, 30);
       connectingClusters.push(leftCluster, rightCluster);
     }
     horizontalClusters.push(noisyLineCluster);
@@ -79,6 +76,7 @@ function setup() {
   renderer.domElement.addEventListener('mousemove', mouseMoved, false);
 	renderer.domElement.addEventListener('mousedown', mousePressed, false);
 	renderer.domElement.addEventListener('mouseup', mouseReleased, false);
+  renderer.domElement.addEventListener('wheel', mouseWheel, false);
   window.addEventListener('resize', onWindowResize, false);
 }
 
@@ -99,6 +97,10 @@ function mouseMoved(event){
 
 function mouseReleased(event){
   mouseIsPressed = false;
+}
+
+function mouseWheel(event){
+  camera.position.z += event.deltaY * 0.1;
 }
 
 function onWindowResize() {
@@ -205,7 +207,7 @@ function NoisyLineCluster(parent, startPos, endPos, count, segments, noise){
 
 
 
-function ConnectingLineCluster(parent, startGeo, endGeo, count, segments, noise){
+function ConnectingLineCluster(parent, startGeo, endGeo, segments, noise){
   this.startGeo = startGeo;
   this.endGeo = endGeo;
 
