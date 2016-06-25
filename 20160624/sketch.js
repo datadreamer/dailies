@@ -4,6 +4,7 @@ var group, light;
 var mesh;
 var raycaster;
 var plane;
+var cursor;
 var threshold = 0.1;
 var xRot = 0;
 var yRot = 0;
@@ -32,11 +33,13 @@ function setup() {
   scene.add(group);
 
   // add light
-  var sphere = new THREE.SphereGeometry( 50, 16, 8 );
+  var sphere = new THREE.SphereGeometry( 20, 16, 8 );
   light = new THREE.PointLight( 0x0099ff, 1, 1000 );
   //light.add( new THREE.Mesh( sphere, new THREE.MeshBasicMaterial( { color: 0xff0040 } ) ) );
   light.position.set(0, 0, 100);
   scene.add(light);
+  // cursor = new THREE.Mesh(sphere, new THREE.MeshPhongMaterial({color:0xffffff}));
+  // scene.add(cursor);
 
   var radius = 300;
   var num = 300;
@@ -148,6 +151,8 @@ function draw() {
   	var intersections = raycaster.intersectObject(plane);
     for(var i=0; i<intersections.length; i++){
       //console.log(intersections[i]);
+      //cursor.position.copy(intersections[i].point);
+      //cursor.position.z = 20;
       mesh.applyForce(intersections[i].point);
     }
   }
