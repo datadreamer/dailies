@@ -93,8 +93,11 @@ function draw() {
   requestAnimationFrame(draw);
   controls.update();
 
-  for(var i=0; i<blocks.length; i++){
+  for(var i=blocks.length-1; i>0; i--){
     blocks[i].update();
+    if(blocks[i].dead){
+      blocks.splice(i,1);
+    }
   }
 
   if(Date.now() - lastRelease > releaseRate){
@@ -114,6 +117,7 @@ function Block(parent){
   this.parent = parent;
   this.growing = true;
   this.shrinking = false;
+  this.dead = false;
   this.growStart = Date.now();
   this.growDuration = 1000;
 
@@ -143,6 +147,7 @@ function Block(parent){
         this.obj.scale.set(1,1-sp,1);
       } else {
         this.shrinking = false;
+        this.dead = true;
         this.parent.remove(this.obj);
       }
     }
