@@ -161,9 +161,8 @@ function Block(parent){
     this.pos.add(this.vec);
     this.vec.multiplyScalar(this.damping);
     this.obj.position.copy(this.pos);
-    // orient object rotation to always be radial around center
-    var rot = this.pos.clone().normalize().multiplyScalar(Math.PI)
-    this.obj.rotation.set(rot.x, rot.y, rot.z);
+    // orient object rotation to always face center
+    this.obj.lookAt(new THREE.Vector3(0,0,0));
     this.obj.geometry.verticesNeedUpdate = true;
 
     if(this.growing){
@@ -171,10 +170,7 @@ function Block(parent){
       if(p < 1){
         var sp = this.sinProgress(p);
         this.obj.scale.set(sp,sp,sp);
-        //this.obj.material.opacity = sp;
-        //this.obj.position.copy(this.targetPos.clone().multiplyScalar(sp));
-        //this.obj.rotation.set(Math.PI/2, this.rot - ((1-sp)*Math.PI), 0);
-      } else {
+    } else {
         this.growing = false;
         this.holding = true;
         this.growStart = Date.now();
@@ -192,8 +188,6 @@ function Block(parent){
         var sp = this.sinProgress(p);
         this.obj.scale.set(1-sp,1-sp,1-sp);
         this.obj.material.opacity = 1-sp;
-        //this.obj.position.copy(this.targetPos.clone().multiplyScalar(1+sp));
-        //this.obj.rotation.set(Math.PI/2, this.rot - (sp*Math.PI), 0);
       } else {
         this.shrinking = false;
         this.dead = true;
