@@ -43,10 +43,10 @@ function setup() {
   var planeSize = 3000;
   var geo = new THREE.Geometry();
   geo.vertices.push(
-    new THREE.Vector3(-planeSize, -planeSize, 0),
-    new THREE.Vector3(planeSize, -planeSize, 0),
-    new THREE.Vector3(planeSize, planeSize, 0),
-    new THREE.Vector3(-planeSize, planeSize, 0)
+    new THREE.Vector3(-planeSize, 0, -planeSize),
+    new THREE.Vector3(planeSize, 0, -planeSize),
+    new THREE.Vector3(planeSize, 0, planeSize),
+    new THREE.Vector3(-planeSize, 0, planeSize)
   );
   geo.faces.push(new THREE.Face3(0,1,2));
   geo.faces.push(new THREE.Face3(0,2,3));
