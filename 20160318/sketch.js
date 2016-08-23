@@ -92,7 +92,9 @@ Dot.prototype = {
     push();
     translate(this.x, this.y);
     rotate(this.a);
-    ellipse(0, 0, this.d, this.d);
+    if(this.d > 0){
+      ellipse(0, 0, this.d, this.d);
+    }
     pop();
   },
 

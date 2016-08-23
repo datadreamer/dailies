@@ -79,7 +79,9 @@ Bar.prototype = {
   draw:function(){
     this.handleDelaying();
     this.handleMoving();
-    line(this.start.x, this.start.y, this.end.x, this.end.y);
+    if(abs(this.start.dist(this.end)) > 0){
+      line(this.start.x, this.start.y, this.end.x, this.end.y);
+    }
     for(var i=0; i<this.bars.length; i++){
       this.bars[i].draw();
     }
