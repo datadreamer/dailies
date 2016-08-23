@@ -74,10 +74,12 @@ Fan.prototype = {
     this.handleDelaying();
     this.handleExpanding();
     strokeWeight(this.sw);
-    arc(this.x, this.y, this.d, this.d, PI, PI + this.rotation);
-    arc(this.x, this.y, this.d*0.75, this.d*0.75, PI, PI + this.rotation);
-    arc(this.x, this.y, this.d*0.5, this.d*0.5, PI, PI + this.rotation);
-    arc(this.x, this.y, this.d*0.25, this.d*0.25, PI, PI + this.rotation);
+    if(this.rotation > 0){
+      arc(this.x, this.y, this.d, this.d, PI, PI + this.rotation);
+      arc(this.x, this.y, this.d*0.75, this.d*0.75, PI, PI + this.rotation);
+      arc(this.x, this.y, this.d*0.5, this.d*0.5, PI, PI + this.rotation);
+      arc(this.x, this.y, this.d*0.25, this.d*0.25, PI, PI + this.rotation);
+    }
     // ellipse(this.x, this.y, this.d, this.d);
     // ellipse(this.x, this.y, this.d*0.75, this.d*0.75);
     // ellipse(this.x, this.y, this.d*0.5, this.d*0.5);
