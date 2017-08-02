@@ -34,6 +34,7 @@ a{
 }
 
 .title{
+	display: none;
 	position: absolute;
 	bottom: 0px;
 	padding: 5px;

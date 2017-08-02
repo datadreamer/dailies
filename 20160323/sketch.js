@@ -31,6 +31,10 @@ function setup(){
     var ypos = (mic.d*0.75 * sin(a)) + windowHeight/2;
     instrument.push(new Instrument(xpos, ypos, sounds[i], colors[i], names[i]));
   }
+  // start playing all (hopefully in sync)
+  for(var i=0; i<instrument.length; i++){
+    instrument[i].play();
+  }
 }
 
 function preload(){
@@ -90,7 +94,6 @@ function Instrument(x, y, sound, c, name){
   this.sound = sound;
   if(this.sound != null){
     this.sound.setVolume(0);
-    this.sound.loop();
   }
   this.c = c;
   this.name = name;
@@ -132,6 +135,20 @@ Instrument.prototype = {
       return true;
     }
     return false;
+  },
+
+  play(){
+    if(this.sound != null){
+      this.sound.setVolume(1);
+      this.sound.loop();
+    }
+  },
+
+  stop(){
+    if(this.sound != null){
+      this.sound.setVolume(0);
+      this.sound.stop();
+    }
   }
 }
 
