@@ -19,6 +19,7 @@ function setup(){
 }
 
 function draw(){
+  capture.loadPixels();
   marks.push(new Mark());
   
   // gradually reduce size of marks
@@ -68,9 +69,14 @@ function Mark(){
   this.a = 128;
   this.ta = 0;
   this.pa = this.a;
-  var colorX = int((this.x / windowWidth) * capture.width);
-  var colorY = int((this.y / windowHeight) * capture.height);
-  this.c = capture.get(colorX, colorY);
+  this.colorX = int((this.x / windowWidth) * capture.width);
+  this.colorY = int((this.y / windowHeight) * capture.height);
+  this.colorIndex = (this.colorY * (capture.width*4)) + (this.colorX * 4);
+  //this.c = capture.get(this.colorX, this.colorY);
+  this.r = capture.pixels[this.colorIndex];
+  this.g = capture.pixels[this.colorIndex+1];
+  this.b = capture.pixels[this.colorIndex+2];
+  this.c = color(this.r, this.g, this.b);
   // start rotating immediately
   //this.angle = random(TWO_PI);
   this.targetAngle = PI + this.angle;
