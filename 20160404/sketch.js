@@ -2,7 +2,7 @@ var spirals = [];
 var scaling = 10;
 
 function setup(){
-  var canvas = createCanvas(windowWidth, windowHeight);
+  var canvas = createCanvas(3000, 2250);
   canvas.parent("splash");
   stroke(255);
   strokeWeight(1);
@@ -67,6 +67,10 @@ function draw(){
 
 function windowResized(){
   resizeCanvas(windowWidth, windowHeight);
+}
+
+function keyPressed(){
+  saveCanvas("spirals", "png");
 }
 
 
