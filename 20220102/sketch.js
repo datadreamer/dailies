@@ -4,8 +4,8 @@
 var img;
 var pg;
 var ditheredImage;
-var numPoints = 100000;
-var pointsPerFrame = 100;
+var numPoints = 200000;
+var pointsPerFrame = 200;
 var totalPoints = 0;
 var imgSize;
 
@@ -42,15 +42,8 @@ function draw(){
       ditheredImage.translate(xpos, ypos);
       ditheredImage.rotate(random()*TWO_PI);
       ditheredImage.fill(255);
-      if(brightness(c) > 80){
-        ditheredImage.square(0,0,8);
-      } else if(brightness(c) > 60){
-        ditheredImage.square(0,0,6);
-      } else if(brightness(c) > 40){
-        ditheredImage.square(0,0,4);
-      } else if(brightness(c) > 20){
-        ditheredImage.square(0,0,2);
-      }
+      var size = brightness(c) * 0.05;
+      ditheredImage.square(0,0,size);
 
       ditheredImage.pop();
     }
