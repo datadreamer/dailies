@@ -26,6 +26,11 @@
 
 		<div id="content">
 
+			<a href="20220103/">
+				<div class="thumb" style="background-image: url('20220103/thumb.png')">
+					<span class="date">2022 01 03<br/>Space (Social Distancing)</span>
+				</div>
+			</a>
 			<a href="20220102/">
 				<div class="thumb" style="background-image: url('20220102/thumb.png')">
 					<span class="date">2022 01 02<br/>Dithering (Self Portrait)</span>
