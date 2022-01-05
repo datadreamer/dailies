@@ -26,6 +26,11 @@
 
 		<div id="content">
 
+			<a href="20220104/">
+				<div class="thumb" style="background-image: url('20220104/thumb.png')">
+					<span class="date">2022 01 04<br/>The Next Next Fidenza (Treviso)</span>
+				</div>
+			</a>
 			<a href="20220103/">
 				<div class="thumb" style="background-image: url('20220103/thumb.png')">
 					<span class="date">2022 01 03<br/>Space (Social Distancing)</span>
