@@ -26,6 +26,11 @@
 
 		<div id="content">
 
+			<a href="20220106/">
+				<div class="thumb" style="background-image: url('20220106/thumb.png')">
+					<span class="date">2022 01 06<br/>Trade Styles with a Friend (Estevan Carlos Benson)</span>
+				</div>
+			</a>
 			<a href="20220105/">
 				<div class="thumb" style="background-image: url('20220105/thumb.png')">
 					<span class="date">2022 01 05<br/>Destroy a Square</span>
