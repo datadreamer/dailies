@@ -62,7 +62,7 @@ function setup(){
 }
 
 function draw(){
-  background(0);
+  background(27, 18, 9);
   push();
   translate(width/2, height/2);
   rotate(leafR);
@@ -74,7 +74,7 @@ function draw(){
     image(paintStrokes[i], random(-width/8, width/8), random(-width/4, width/4), paintStrokesW[i], paintStrokesH[i]);
   }
   pop();
-  rect(100.5, 100.5, width-200, height-200);
+  rect(60.5, 60.5, width-120, height-120);
 }
 
 function windowResized(){
