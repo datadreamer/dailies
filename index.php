@@ -26,6 +26,11 @@
 
 		<div id="content">
 
+			<a href="20220107/">
+				<div class="thumb" style="background-image: url('20220106/thumb.png')">
+					<span class="date">2022 01 07<br/>Sol LeWitt Wall Drawing 414</span>
+				</div>
+			</a>
 			<a href="20220106/">
 				<div class="thumb" style="background-image: url('20220106/thumb.png')">
 					<span class="date">2022 01 06<br/>Trade Styles with a Friend (Estevan Carlos Benson)</span>
