@@ -4,6 +4,7 @@ var colors;
 var names;
 var mic;
 var maxDiameter;
+var started = false;
 
 function setup(){
   var canvas = createCanvas(windowWidth, windowHeight);
@@ -32,9 +33,9 @@ function setup(){
     instrument.push(new Instrument(xpos, ypos, sounds[i], colors[i], names[i]));
   }
   // start playing all (hopefully in sync)
-  for(var i=0; i<instrument.length; i++){
-    instrument[i].play();
-  }
+  // for(var i=0; i<instrument.length; i++){
+  //   instrument[i].play();
+  // }
 }
 
 function preload(){
@@ -52,17 +53,31 @@ function loadSounds(){
 }
 
 function draw(){
-  blendMode(NORMAL);
-  background(0);
-  blendMode(SCREEN);
-  mic.draw();
-  noStroke();
-  for(var i=0; i<instrument.length; i++){
-    instrument[i].draw();
+  if(!started){
+    background(0);
+    fill(255);
+    noStroke();
+    text("CLICK ANYWHERE TO START", width/2, height/2);
+  } else {
+    blendMode(NORMAL);
+    background(0);
+    blendMode(SCREEN);
+    mic.draw();
+    noStroke();
+    for(var i=0; i<instrument.length; i++){
+      instrument[i].draw();
+    }
   }
 }
 
 function mousePressed(){
+  if(!started){
+    // start playing all (hopefully in sync)
+    for(var i=0; i<instrument.length; i++){
+      instrument[i].play();
+    }
+    started = true;
+  }
   if(mic.isOver()){
     mic.dragging = true;
   }
